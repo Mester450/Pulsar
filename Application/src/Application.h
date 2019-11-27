@@ -3,6 +3,8 @@
 
 #include "NGin.h"
 
+#include "Menu.h"
+
 class Application : public ngin::MainLevel
 {
 public:
@@ -15,7 +17,7 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
 
-	ngin::Button button;
+	ngin::Level* _currentLevel;
 };
 
 ngin::MainLevel* setMainLevel() {

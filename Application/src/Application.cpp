@@ -3,32 +3,29 @@
 Application::Application()
 {
 	windowVideoMode_ = { 1366,768 };
-	windowName_ = "Client App";
+	windowName_ = "DodgeBall";
 }
 
 void Application::setup()
 {
 	ngin::Resources::setLocation("assets/");
 
-	button.setTexture(*ngin::Resources::AcquireTexture("button.png"));
-	button.setPosition({100, 200});
+	_currentLevel = new Menu;
+	_currentLevel->setup();
+
 }
 
 void Application::handleEvents()
 {
-	button.handleEvents(event_, ngin::Cursor::getPosition());
-
-	if (button.isActive()) {
-		NG_LOG_INFO("Button Pressed");
-	}
+	_currentLevel->handleEvents(event_);
 }
 
 void Application::update()
 {
-	/*Empty bc im shit*/
+	_currentLevel->update();
 }
 
 void Application::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(button);
+	_currentLevel->draw(target, states);
 }

@@ -13,6 +13,20 @@ public:
 	// gets called every frame but should only draw on window
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 private:
+	
+	enum BUTTONS {
+		STARTGAME = 0,
+		HIGHSCORES,
+		SETTINGS,
+		EXIT
+	};
 
-	ngin::Button _start{ "Start Game", {400, 50} };
+	ngin::Button buttons[4]{
+		{"Start Game", {400, 50}},
+		{"HighScores", {400, 50}},
+		{"Settings", {400, 50}},
+		{"Exit Game", {400, 50}}
+	};
+
+	bool _canStartMove = true;
 };

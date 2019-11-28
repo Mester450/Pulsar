@@ -53,7 +53,8 @@ namespace ngin
 		sf::FloatRect getGlobalBounds() const { return shape_.getGlobalBounds(); }
 		bool isPressed() const { return isPressed_; }
 		bool isActive() const { return isActive_; }
-	private:
+		bool isSelected() const { return isSelected_; }
+ 	private:
 		sf::RectangleShape shape_;
 
 		sf::Text text_;

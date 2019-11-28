@@ -113,8 +113,7 @@ namespace ngin
 	void Button::setScale(const sf::Vector2f & scale)
 	{
 		shape_.setScale(scale);
-
-		text_.setCharacterSize(int(38 * scale.y));
+		text_.setScale(scale);
 
 		centerTextInShape(text_, shape_);
 		textPos_ = text_.getPosition();

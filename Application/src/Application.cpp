@@ -18,6 +18,16 @@ void Application::setup()
 void Application::handleEvents()
 {
 	_currentLevel->handleEvents(event_);
+
+	if (_currentLevel->getResponse() == Menu::RESPONSES_SETTINGS)
+	{
+		_currentLevel = new Settings;
+		_currentLevel->setup();
+	}
+	if (_currentLevel->getResponse() == Menu::RESPONSES_EXIT)
+	{
+		window_.close();
+	}
 }
 
 void Application::update()

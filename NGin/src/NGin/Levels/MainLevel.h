@@ -3,7 +3,7 @@
 #include "../System/Timer.h"
 #include "../Audio/Audio.h"
 #include "../UserInterface/Cursor.h"
-#include"../System/Console.h"
+#include "../System/Console.h"
 
 namespace ngin {
 	class MainLevel : public sf::Drawable

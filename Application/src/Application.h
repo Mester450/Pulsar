@@ -4,6 +4,7 @@
 #include "NGin.h"
 
 #include "Menu.h"
+#include "Settings.h"
 
 class Application : public ngin::MainLevel
 {

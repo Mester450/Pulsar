@@ -29,7 +29,7 @@ namespace ngin {
 		// gets called every frame but should only draw on window
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const = 0;
 
-		sf::VideoMode windowVideoMode_{ 1000, 600 };
+		sf::VideoMode windowVideoMode_{ 1366, 768 };
 		sf::String windowName_ = "My Application";
 		WINDOW_TYPE windowType_ = WINDOW_TYPE::UNRESIZEABLE;
 

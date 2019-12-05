@@ -6,7 +6,7 @@ void Menu::setup() {
 	for (int i = 0; i < 4; i++) {
 		buttons[i].setTexture(*ngin::Resources::AcquireTexture("button.png"));
 		buttons[i].setFont(*ngin::Resources::AcquireFont("arial.ttf"));
-		buttons[i].setPosition({ 1000 / 2-buttons[i].getSize().x / 2, 300 + static_cast<float>(i) * 100 });
+		buttons[i].setPosition({ 1366 / 2 - buttons[i].getSize().x / 2, 200 + static_cast<float>(i) * 100 });
 		buttons[i].setSelectThickness(0);
 		buttons[i].setFillColor({ 28, 105, 214 });
 		buttons[i].setTextColor({ 214, 112, 28 });

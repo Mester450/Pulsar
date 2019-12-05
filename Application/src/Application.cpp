@@ -4,6 +4,7 @@ Application::Application()
 {
 	windowVideoMode_ = { 1366,768 };
 	windowName_ = "DodgeBall";
+	window_.setView(_view); // FUCKING IMPORTANT
 }
 
 void Application::setup()
@@ -12,7 +13,6 @@ void Application::setup()
 
 	_currentLevel = new Menu;
 	_currentLevel->setup();
-
 }
 
 void Application::handleEvents()
@@ -24,7 +24,12 @@ void Application::handleEvents()
 		_currentLevel = new Settings;
 		_currentLevel->setup();
 	}
-	if (_currentLevel->getResponse() == Menu::RESPONSES_EXIT)
+	else if (_currentLevel->getResponse() == Menu::RESPONSES_START)
+	{
+		_currentLevel = new Game;
+		_currentLevel->setup();
+	}
+	else if (_currentLevel->getResponse() == Menu::RESPONSES_EXIT)
 	{
 		window_.close();
 	}
@@ -38,4 +43,6 @@ void Application::update()
 void Application::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	_currentLevel->draw(target, states);
+
+	sf::RectangleShape shape;
 }

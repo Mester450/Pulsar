@@ -3,6 +3,8 @@
 
 namespace ngin {
 
+	sf::View MainLevel::view_{ sf::FloatRect{0.0F, 0.0F, 1366.0F, 768.0F} };
+
 	void MainLevel::run()
 	{
 		// creates window with defined preperties
@@ -102,6 +104,8 @@ namespace ngin {
 		saveName_ = windowName_;
 		saveVideoMode_ = windowVideoMode_;
 		saveType_ = windowType_;
+
+		window_.setView(view_); // FUCKING IMPORTANT
 	}
 
 	void MainLevel::setWindowStyle(sf::Window& window, sf::Uint32 style) const

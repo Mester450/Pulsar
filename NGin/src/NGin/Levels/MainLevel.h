@@ -19,6 +19,8 @@ namespace ngin {
 			FULLSCREEN
 		};
 
+		static sf::View getView() { return view_; }
+
 	protected:
 		// gets called after creating the window
 		virtual void setup() = 0;
@@ -32,6 +34,7 @@ namespace ngin {
 		sf::VideoMode windowVideoMode_{ 1366, 768 };
 		sf::String windowName_ = "My Application";
 		WINDOW_TYPE windowType_ = WINDOW_TYPE::UNRESIZEABLE;
+		static sf::View view_;
 
 		sf::RenderWindow window_;
 		sf::Event event_;

@@ -17,10 +17,8 @@ public:
 	virtual void handleEvents();
 	virtual void update();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
 private:
-
-	sf::View _view{ sf::FloatRect(0.0f, 0.0f, 1366.0f, 768.0f) };
-
 	ngin::Level* _currentLevel;
 };
 

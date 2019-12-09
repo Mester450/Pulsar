@@ -4,7 +4,6 @@ Application::Application()
 {
 	windowVideoMode_ = { 1366,768 };
 	windowName_ = "DodgeBall";
-	window_.setView(_view); // FUCKING IMPORTANT
 }
 
 void Application::setup()
@@ -13,6 +12,8 @@ void Application::setup()
 
 	_currentLevel = new Menu;
 	_currentLevel->setup();
+
+	window_.setFramerateLimit(144);
 }
 
 void Application::handleEvents()

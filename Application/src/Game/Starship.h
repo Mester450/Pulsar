@@ -12,8 +12,7 @@ public:
 		_shape.setFillColor(sf::Color::Blue);
 
 		_isAlive = true;
-		_position = { 1366 / 2 - _shape.getGlobalBounds().width / 2, 768 / 2 - _shape.getGlobalBounds().height / 2 };
-		_shape.setPosition(_position);
+		_shape.setPosition({ 1366 / 2 - _shape.getGlobalBounds().width / 2, 768 / 2 - _shape.getGlobalBounds().height / 2 });
 	}
 
 	// gets called only if there is an ongoing event
@@ -24,8 +23,8 @@ public:
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-	sf::Vector2f _position;
 	sf::RectangleShape _shape;
+	float _speed = 500.0F;
 
 	bool _isAlive;
 };

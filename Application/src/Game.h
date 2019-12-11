@@ -4,6 +4,8 @@
 
 #include "Game/Starship.h"
 
+#include "Game/Enemy.h"
+
 class Game : public ngin::Level {
 public:
 	// gets called once in the beginning-
@@ -17,5 +19,6 @@ public:
 
 private:
 
+	Enemy _enemy;
 	Starship _starShip;
 };

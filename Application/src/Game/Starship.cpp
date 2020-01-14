@@ -35,15 +35,15 @@ void Starship::update()
 	}
 
 
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-		_isAlive = false;
-	}
 
 }
 
 void Starship::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	if (_isAlive) {
+	if (_lives > 0) {
 		target.draw(_shape);
+		for (int i = 0; i < _lives; i++) {
+			target.draw(_health[i]);
+		}
 	}
 }

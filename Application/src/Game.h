@@ -19,6 +19,6 @@ public:
 
 private:
 
-	Enemy _enemy;
+	Enemy _enemy{ {20,20} };
 	Starship _starShip;
 };

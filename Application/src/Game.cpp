@@ -12,7 +12,7 @@ void Game::handleEvents(const sf::Event& event)
 void Game::update()
 {
 	_starShip.update();
-	_enemy.update();
+	_enemy.update(_starShip);
 }
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const

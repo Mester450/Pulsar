@@ -32,6 +32,14 @@ public:
 		return _isOnScreen;
 	}
 
+	sf::FloatRect getGlobalBounds() {
+		return _shapeEnemy.getGlobalBounds();
+	}
+
+	void setPosition(const sf::Vector2f& position) {
+		_shapeEnemy.setPosition(position);
+	}
+
 
 private:
 	sf::RectangleShape _shapeEnemy;

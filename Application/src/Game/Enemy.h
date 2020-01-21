@@ -4,6 +4,9 @@
 #include "Ngin.h"
 #include "Starship.h"
 
+#include <stdlib.h>     /* srand, rand */
+#include <time.h> 
+
 class Enemy : public sf::Drawable {
 public:
 	Enemy(const sf::Vector2f& position) {
@@ -18,6 +21,26 @@ public:
 		_isOnScreen = true;
 		//_shapeEnemy.setPosition({ 1366 / 2 - _shapeEnemy.getGlobalBounds().width / 2, 768 / 2 - _shapeEnemy.getGlobalBounds().height / 2 });
 		_shapeEnemy.setPosition(position);
+
+
+		sf::Vector2i randNum;
+
+		if (rand() % 2 == 1) {
+			randNum.x = 1;
+		}
+		else {
+			randNum.x = -1;
+		}
+
+		if (rand() % 2 == 1) {
+			randNum.y = 1;
+		}
+		else {
+			randNum.y = -1;
+		}
+
+		_movement = { randNum.x * _speed.x,
+			          randNum.y * _speed.y };
 
 	}
 
@@ -43,7 +66,10 @@ public:
 
 private:
 	sf::RectangleShape _shapeEnemy;
+	sf::Vector2f _movement;
+	sf::Vector2f _speed = { 1,1 };
 	
+
 	bool _isAlive;
 	bool _isTouching;
 	bool _touched;

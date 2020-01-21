@@ -34,6 +34,14 @@ void Application::handleEvents()
 	{
 		window_.close();
 	}
+
+
+	if (_currentLevel->getResponse() == Game::RESPONSES_ENDSCREEN)
+	{
+		_currentLevel = new Endscreen;
+		_currentLevel->setup();
+	}
+
 }
 
 void Application::update()

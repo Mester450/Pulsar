@@ -6,6 +6,7 @@
 #include "Menu.h"
 #include "Game.h"
 #include "Settings.h"
+#include "Endscreen.h"
 
 class Application : public ngin::MainLevel
 {

@@ -11,8 +11,16 @@
 
 class Game : public ngin::Level {
 public:
+
+	enum RESPONSES {
+		RESPONSES_NONE = 5,
+		RESPONSES_ENDSCREEN,
+		RESPONSES_EXIT
+	};
 	
 	Game() {
+		srand(time(NULL));
+
 		_enemy.push_back(sf::Vector2f{ -500, -500 });
 		sf::Vector2f enemyPos;
 
@@ -20,7 +28,6 @@ public:
 		enemyPos.x = rand() % static_cast<int>(1366 - _enemy[_enemy.size() - 1].getGlobalBounds().width);
 		enemyPos.y = rand() % static_cast<int>(768 - _enemy[_enemy.size() - 1].getGlobalBounds().height);
 		_enemy[_enemy.size() - 1].setPosition({ enemyPos.x, enemyPos.y });
-
 	}
 	// gets called once in the beginning-
 	void setup();
@@ -38,5 +45,9 @@ private:
 	float _spawnTime = 1.0f;
 	float _spawnDeltaTime = 0.0f;
 	
+	float _scoreTime = 0.0f;
+	std::string _scoreString;
+
 	Starship _starShip;
+	sf::Text _scoreTextTime;
 };

@@ -8,7 +8,7 @@ public:
 	Starship() {
 		_shape.setTexture(&*ngin::Resources::AcquireTexture("Starship.png"));
 		_shape.setSize({ 512, 512 });
-		_shape.setScale({ 0.2f, 0.2f });
+		_shape.setScale({ 0.2f, 0.17f });
 		_shape.setFillColor(sf::Color::Blue);
 		_shape.setPosition({ 1366 / 2 - _shape.getGlobalBounds().width / 2, 768 / 2 - _shape.getGlobalBounds().height / 2 });
 
@@ -36,6 +36,10 @@ public:
 
 	int getLives() {
 		return _lives;
+	}
+
+	bool isAlive() const {
+		return _lives > 0;
 	}
 
 private:

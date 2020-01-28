@@ -1,13 +1,13 @@
 #include "Endscreen.h"
 
 void Endscreen::setup()
-{	
+{
 	sf::FloatRect screen = { 0, 0 , 1366, 768 };
 
-	_gameOver.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
+	_gameOver.setFont(*ngin::Resources::AcquireFont("oldgame.ttf"));
 	_gameOver.setCharacterSize(90);
 	_gameOver.setString("Game Over");
-	_gameOver.setFillColor(sf::Color::White);
+	_gameOver.setFillColor({214, 112, 28});
 
 	_score.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
 	_score.setCharacterSize(45);
@@ -19,7 +19,7 @@ void Endscreen::setup()
 	ngin::centerTextInBounds(_score, screen, -100);
 
 	button.setTexture(*ngin::Resources::AcquireTexture("button.png"));
-	button.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
+	button.setFont(*ngin::Resources::AcquireFont("pixeled.ttf"));
 	button.setPosition({ 1366 / 2 - button.getSize().x / 2, 400 });
 	button.setSelectThickness(0);
 	button.setFillColor({ 28, 105, 214 });

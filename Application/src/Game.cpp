@@ -1,5 +1,7 @@
 #include "Game.h"
 
+std::string Game::_scoreString;
+
 void Game::setup()
 {
 	_scoreTextTime.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
@@ -29,19 +31,7 @@ void Game::update()
 	if (_spawnDeltaTime >= _spawnTime) {
 		_spawnDeltaTime = 0;
 
-		_enemy.push_back(sf::Vector2f{ -500, -500 });
-		sf::Vector2f enemyPos;
-
-		sf::Vector2i upperLimit({
-			static_cast<int>(1366 - _enemy[_enemy.size() - 1].getGlobalBounds().width),
-			static_cast<int>(768 - _enemy[_enemy.size() - 1].getGlobalBounds().height)});
-
-		NG_LOG_ONCE_INFO("lmit X: ", upperLimit.x, "\n limitY: ", upperLimit.y);
-
-		enemyPos.x = rand() % upperLimit.x;
-		enemyPos.y = rand() % upperLimit.y;
-
-		_enemy[_enemy.size() - 1].setPosition({ enemyPos.x, enemyPos.y });
+		generateEnemy();
 
 	}
 
@@ -66,4 +56,24 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	_starShip.draw(target, states);
 
 	target.draw(_scoreTextTime);
+}
+
+void Game::generateEnemy()
+{
+	_enemy.push_back(sf::Vector2f{ -500, -500 });
+	sf::Vector2f enemyPos;
+
+	sf::FloatRect safeZone = {
+		_starShip.getGlobalBounds().left - 50 ,
+		_starShip.getGlobalBounds().top - 50 ,
+		_starShip.getGlobalBounds().width + 50 ,
+		_starShip.getGlobalBounds().height + 50
+	};
+
+	do {
+		enemyPos.x = rand() % static_cast<int>(1366 - _enemy[_enemy.size() - 1].getGlobalBounds().width);
+		enemyPos.y = rand() % static_cast<int>(768 - _enemy[_enemy.size() - 1].getGlobalBounds().height);
+		_enemy[_enemy.size() - 1].setPosition({ enemyPos.x, enemyPos.y });
+	} while (_enemy.back().getGlobalBounds().intersects(safeZone));
+
 }

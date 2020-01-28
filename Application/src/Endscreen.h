@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Ngin.h"
+#include "Game.h"
+
 
 class Endscreen : public ngin::Level {
 public:
@@ -8,13 +10,29 @@ public:
 	}
 	// gets called once in the beginning-
 	void setup();
-	// gets called only if there is an ongoing event
+	
 	void handleEvents(const sf::Event& event);
 	// gets called every frame but is not constant
 	void update();
 	// gets called every frame but should only draw on window
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	enum RESPONSES {
+		RESPONSES_NONE = 8,
+		RESPONSES_BACK
+	};
+
 private:
+
+
 	sf::Text _gameOver;
+	sf::Text _score;
+	ngin::Button button{
+	"Back", {400, 50}
+	};
+
+	bool _canStartMove = false;
+		
+	
+
 };

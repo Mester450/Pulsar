@@ -42,6 +42,13 @@ void Application::handleEvents()
 		_currentLevel->setup();
 	}
 
+
+	if (_currentLevel->getResponse() == Endscreen::RESPONSES_BACK)
+	{
+		_currentLevel = new Menu;
+		_currentLevel->setup();
+	}
+
 }
 
 void Application::update()

@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "Settings.h"
 #include "Endscreen.h"
+#include "Highscores.h"
 
 class Application : public ngin::MainLevel
 {

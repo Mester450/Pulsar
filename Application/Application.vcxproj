@@ -90,6 +90,8 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Game\Enemy.cpp" />
     <ClCompile Include="src\Game\Starship.cpp" />
+    <ClCompile Include="src\Highscores.cpp" />
+    <ClCompile Include="src\Highscores\ReadWrite.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Settings.cpp" />
   </ItemGroup>
@@ -104,6 +106,8 @@
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Game\Enemy.h" />
     <ClInclude Include="src\Game\Starship.h" />
+    <ClInclude Include="src\Highscores.h" />
+    <ClInclude Include="src\Highscores\ReadWrite.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Settings.h" />
   </ItemGroup>

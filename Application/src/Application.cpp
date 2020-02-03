@@ -20,14 +20,19 @@ void Application::handleEvents()
 {
 	_currentLevel->handleEvents(event_);
 
-	if (_currentLevel->getResponse() == Menu::RESPONSES_SETTINGS)
-	{
-		_currentLevel = new Settings;
-		_currentLevel->setup();
-	}
-	else if (_currentLevel->getResponse() == Menu::RESPONSES_START)
+	if (_currentLevel->getResponse() == Menu::RESPONSES_START)
 	{
 		_currentLevel = new Game;
+		_currentLevel->setup();
+	}
+	else if (_currentLevel->getResponse() == Menu::RESPONSES_HIGHSCORES) 
+	{
+		_currentLevel = new Highscores;
+		_currentLevel->setup();
+	}
+	else if (_currentLevel->getResponse() == Menu::RESPONSES_SETTINGS)
+	{
+		_currentLevel = new Settings;
 		_currentLevel->setup();
 	}
 	else if (_currentLevel->getResponse() == Menu::RESPONSES_EXIT)
@@ -35,13 +40,18 @@ void Application::handleEvents()
 		window_.close();
 	}
 
-
+	
 	if (_currentLevel->getResponse() == Game::RESPONSES_ENDSCREEN)
 	{
 		_currentLevel = new Endscreen;
 		_currentLevel->setup();
 	}
 
+	if (_currentLevel->getResponse() == Highscores::RESPONSES_BACK)
+	{
+		_currentLevel = new Menu;
+		_currentLevel->setup();
+	}
 
 	if (_currentLevel->getResponse() == Endscreen::RESPONSES_BACK)
 	{

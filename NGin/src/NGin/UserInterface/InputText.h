@@ -36,6 +36,7 @@ namespace ngin {
 		bool getisActive() const { return isActive_; }
 		sf::FloatRect getGlobalBounds() const { return shape_.getGlobalBounds(); }
 		sf::Vector2f getPosition() const { return shape_.getPosition(); }
+		sf::Vector2f getSize() const { return shape_.getSize(); }
 
 	private:
 		sf::RectangleShape shape_; // the block that the text gets displayed in

@@ -22,8 +22,14 @@ public:
 		RESPONSES_BACK
 	};
 
+	static std::string getPlayerName()
+	{
+		return _nameString;
+	}
+
 private:
 
+	ngin::InputText _playerName;
 
 	sf::Text _gameOver;
 	sf::Text _score;
@@ -32,6 +38,7 @@ private:
 	};
 
 	bool _canStartMove = false;
+	static std::string _nameString;
 		
 	
 

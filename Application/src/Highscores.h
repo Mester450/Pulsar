@@ -1,7 +1,5 @@
 #pragma once
-
 #include "Ngin.h"
-
 
 class Highscores : public ngin::Level {
 public:
@@ -22,6 +20,9 @@ public:
 private:
 	ngin::Button _back{ "Back", { 400, 50 } };
 	sf::Text _highScores;
+
+	std::vector<sf::Text> _scores;
+	int _numOfScores = 10;
 
 	bool _canStartMove = false;
 };

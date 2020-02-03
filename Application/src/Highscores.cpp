@@ -12,10 +12,24 @@ void Highscores::setup()
 
 	_back.setTexture(*ngin::Resources::AcquireTexture("button.png"));
 	_back.setFont(*ngin::Resources::AcquireFont("pixeled.ttf"));
-	_back.setPosition({ 1366 / 2 - _back.getSize().x / 2, 650 });
+	_back.setPosition({ 1366 / 2 - _back.getSize().x / 2, 675 });
 	_back.setSelectThickness(0);
 	_back.setFillColor({ 28, 105, 214 });
 	_back.setTextColor({ 214, 112, 28 });
+
+	// TODO: REMOVE
+	for (int i = 0; i < _numOfScores; i++) {
+		sf::Text tmp;
+		tmp.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
+		tmp.setCharacterSize(30);
+		tmp.setString(std::to_string(i+1) + ": " + "35.2345678");
+		tmp.setFillColor({ 214, 112, 28 });
+
+		ngin::centerTextInBounds(tmp, screen, -200 + i*(45) );
+
+
+		_scores.push_back(tmp);
+	}
 }
 
 void Highscores::handleEvents(const sf::Event& event)
@@ -64,4 +78,8 @@ void Highscores::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {	
 	target.draw(_highScores);
 	target.draw(_back);
+
+	for (int i = 0; i < _scores.size(); i++) {
+		target.draw(_scores[i]);
+	}
 }

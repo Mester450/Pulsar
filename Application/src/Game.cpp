@@ -1,5 +1,6 @@
 #include "Game.h"
 
+float Game::_scoreTime = 0.0F;
 std::string Game::_scoreString;
 
 void Game::setup()

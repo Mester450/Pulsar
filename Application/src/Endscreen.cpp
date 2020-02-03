@@ -1,5 +1,7 @@
 #include "Endscreen.h"
 
+std::string Endscreen::_nameString = "Unknown";
+
 void Endscreen::setup()
 {
 	sf::FloatRect screen = { 0, 0 , 1366, 768 };
@@ -14,7 +16,6 @@ void Endscreen::setup()
 	_score.setString("Score: " + Game::getScoreString());
 	_score.setFillColor(sf::Color::White);
 
-
 	ngin::centerTextInBounds(_gameOver, screen, -200);
 	ngin::centerTextInBounds(_score, screen, -100);
 
@@ -25,11 +26,18 @@ void Endscreen::setup()
 	button.setFillColor({ 28, 105, 214 });
 	button.setTextColor({ 214, 112, 28 });
 
+	_playerName.setTexture(*ngin::Resources::AcquireTexture("inputtext.png"));
+	_playerName.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
+	_playerName.setPosition({ 1366 / 2 - _playerName.getSize().x / 2, 325 });
+	_playerName.setFillColor({ 255, 255, 255 });
+	_playerName.setTextColor({ 0, 0, 0 });
+	_playerName.setSelectColor({ 214, 112, 28 });
 }
 
 void Endscreen::handleEvents(const sf::Event& event)
 {
 	button.handleEvents(event, ngin::Cursor::getPosition());
+	_playerName.handleEvents(event, ngin::Cursor::getPosition());
 
 	if (button.isSelected()) {
 
@@ -59,6 +67,10 @@ void Endscreen::handleEvents(const sf::Event& event)
 
 	if (button.isPressed())
 	{
+		// if textbox not empty
+		if (_playerName.getString() != "") {
+			_nameString = std::string(_playerName.getString());
+		}
 		response_ = RESPONSES_BACK;
 	}
 	else {
@@ -76,4 +88,5 @@ void Endscreen::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(_gameOver);
 	target.draw(_score);
 	target.draw(button);
+	target.draw(_playerName);
 }

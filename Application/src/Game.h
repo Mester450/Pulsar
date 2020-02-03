@@ -35,6 +35,10 @@ public:
 		return _scoreString;
 	}
 
+	static float getScoreFloat() {
+		return _scoreTime;
+	}
+
 private:
 	void generateEnemy();
 
@@ -43,7 +47,7 @@ private:
 	float _spawnTime = 1.0f;
 	float _spawnDeltaTime = 0.0f;
 	
-	float _scoreTime = 0.0f;
+	static float _scoreTime;
 	static std::string _scoreString;
 
 	Starship _starShip;

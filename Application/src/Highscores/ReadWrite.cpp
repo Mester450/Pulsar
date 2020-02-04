@@ -46,11 +46,12 @@ void ReadWrite::addHighScore()
 			}
 		}
 
+		if (!isSaved) { // save if less players than limit	
+			_players.push_back(thisPlayer);
+		}
+
 		if ( static_cast<int>(_players.size() - _scoreLimit) > 0) { // delete if more players than limit
 			_players.erase(_players.begin() + _scoreLimit, _players.end());
-		}
-		else if (!isSaved) { // save if less players than limit	
-			_players.push_back(thisPlayer);
 		}
 	}
 }

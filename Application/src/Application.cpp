@@ -4,6 +4,10 @@ Application::Application()
 {
 	windowVideoMode_ = { 1366,768 };
 	windowName_ = "DodgeBall";
+
+ #ifndef _DEBUG
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
+ #endif
 }
 
 void Application::setup()

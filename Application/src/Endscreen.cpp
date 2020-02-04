@@ -65,7 +65,7 @@ void Endscreen::handleEvents(const sf::Event& event)
 
 	}
 
-	if (button.isPressed())
+	if (button.isPressed() || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter))
 	{
 		// if textbox not empty
 		if (_playerName.getString() != "") {

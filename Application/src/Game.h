@@ -42,14 +42,23 @@ public:
 private:
 	void generateEnemy();
 
-	std::vector<Enemy> _enemy;
+	std::vector<Enemy> _enemies;
 
-	float _spawnTime = 1.0f;
-	float _spawnDeltaTime = 0.0f;
+	float _spawnTime = 1.0F;
+	float _spawnDeltaTime = 0.0F;
+
+	float _levelTimer = 0.0F;
+	const float _timeLimit = 20.0F;
 	
 	static float _scoreTime;
 	static std::string _scoreString;
 
 	Starship _starShip;
 	sf::Text _scoreTextTime;
+
+	sf::Text _waveText;
+	float _waveTimer = 0.0F;
+	const float _waveLimit = 3.0F;
+	int _waveNum = 1;
+	bool _drawWave;
 };

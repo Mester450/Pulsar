@@ -63,12 +63,19 @@ public:
 		_shapeEnemy.setPosition(position);
 	}
 
+	static sf::Vector2f getSpeed() {
+		return _speed;
+	}
+
+	static void setSpeed(sf::Vector2f in_speed) {
+		_speed = in_speed;
+	}
+
 
 private:
 	sf::RectangleShape _shapeEnemy;
 	sf::Vector2f _movement;
-	sf::Vector2f _speed = { 1,1 };
-	
+	static sf::Vector2f _speed;
 
 	bool _isAlive;
 	bool _isTouching;

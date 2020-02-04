@@ -1,5 +1,7 @@
 #include "Enemy.h"
 
+sf::Vector2f Enemy::_speed = {1, 1};
+
 void Enemy::handleEvents(const sf::Event& event)
 {
 

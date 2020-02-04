@@ -19,7 +19,7 @@ public:
 	};
 	
 	Game() {
-
+		_scoreTime = 0.0F; // reset score
 		generateEnemy();
 	}
 	// gets called once in the beginning-

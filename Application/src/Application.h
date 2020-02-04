@@ -8,6 +8,7 @@
 #include "Settings.h"
 #include "Endscreen.h"
 #include "Highscores.h"
+#include "Highscores/ReadWrite.h"
 
 class Application : public ngin::MainLevel
 {
@@ -22,6 +23,8 @@ public:
 
 private:
 	ngin::Level* _currentLevel;
+
+	ReadWrite _readWrite;
 };
 
 ngin::MainLevel* setMainLevel() {

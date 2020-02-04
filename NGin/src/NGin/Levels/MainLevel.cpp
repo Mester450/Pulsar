@@ -23,15 +23,15 @@ namespace ngin {
 
 			while (window_.pollEvent(event_))
 			{
-				// close window on request
-				if (event_.type == sf::Event::Closed)
-					window_.close();
-
 				// client's events handling
 				handleEvents();
 
 				// enables use of ngin::cursor::getPosition()
 				ngin::Cursor::followMouse(window_);
+
+				// close window on request
+				if (event_.type == sf::Event::Closed)
+					window_.close();
 			}
 
 			// clear window from previous bs

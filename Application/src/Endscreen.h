@@ -34,7 +34,7 @@ private:
 	sf::Text _gameOver;
 	sf::Text _score;
 	ngin::Button button{
-	"Back", {400, 50}
+	"Save  and  back", {400, 50}
 	};
 
 	bool _canStartMove = false;

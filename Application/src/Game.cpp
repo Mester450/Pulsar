@@ -8,8 +8,6 @@ void Game::setup()
 	_scoreTextTime.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
 	_scoreTextTime.setCharacterSize(30);
 	_scoreTextTime.setFillColor(sf::Color::White);
-	
-
 }
 
 void Game::handleEvents(const sf::Event& event)

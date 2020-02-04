@@ -1,4 +1,5 @@
 #include "Highscores.h"
+#include "Highscores/ReadWrite.h"
 
 void Highscores::setup()
 {	
@@ -18,15 +19,16 @@ void Highscores::setup()
 	_back.setTextColor({ 214, 112, 28 });
 
 	// TODO: REMOVE
-	for (int i = 0; i < _numOfScores; i++) {
+	for (int i = 0; i < (int)ReadWrite::getPlayers()->size(); i++) {
 		sf::Text tmp;
 		tmp.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
 		tmp.setCharacterSize(30);
-		tmp.setString(std::to_string(i+1) + ": " + "35.2345678");
 		tmp.setFillColor({ 214, 112, 28 });
+		tmp.setString(std::to_string(i + 1) + ": " +
+			ReadWrite::getPlayers()->at(i).name + " " +
+			std::to_string(ReadWrite::getPlayers()->at(i).score));
 
-		ngin::centerTextInBounds(tmp, screen, -200 + i*(45) );
-
+		ngin::centerTextInBounds(tmp, screen, -200 + i * (45));
 
 		_scores.push_back(tmp);
 	}

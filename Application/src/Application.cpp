@@ -14,6 +14,8 @@ void Application::setup()
 	_currentLevel->setup();
 
 	window_.setFramerateLimit(144);
+
+	_readWrite.readHighScore();
 }
 
 void Application::handleEvents()
@@ -35,8 +37,9 @@ void Application::handleEvents()
 		_currentLevel = new Settings;
 		_currentLevel->setup();
 	}
-	else if (_currentLevel->getResponse() == Menu::RESPONSES_EXIT)
+	else if (_currentLevel->getResponse() == Menu::RESPONSES_EXIT || event_.type == sf::Event::Closed)
 	{
+		_readWrite.writeHighScore();
 		window_.close();
 	}
 
@@ -55,6 +58,7 @@ void Application::handleEvents()
 
 	if (_currentLevel->getResponse() == Endscreen::RESPONSES_BACK)
 	{
+		_readWrite.addHighScore();
 		_currentLevel = new Menu;
 		_currentLevel->setup();
 	}

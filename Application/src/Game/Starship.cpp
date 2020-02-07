@@ -23,11 +23,11 @@ void Starship::update()
 		}
 
 
-		if (_shape.getPosition().x + _shape.getGlobalBounds().width > ngin::MainLevel::getView().getSize().x) {
-			_shape.setPosition({ ngin::MainLevel::getView().getSize().x - _shape.getGlobalBounds().width, _shape.getPosition().y });
+		if (_shape.getPosition().x + _shape.getGlobalBounds().width > ngin::MainLevel::view_.getSize().x) {
+			_shape.setPosition({ ngin::MainLevel::view_.getSize().x - _shape.getGlobalBounds().width, _shape.getPosition().y });
 		}
-		if (_shape.getPosition().y + _shape.getGlobalBounds().height > ngin::MainLevel::getView().getSize().y) {
-			_shape.setPosition({ _shape.getPosition().x, ngin::MainLevel::getView().getSize().y - _shape.getGlobalBounds().height });
+		if (_shape.getPosition().y + _shape.getGlobalBounds().height > ngin::MainLevel::view_.getSize().y) {
+			_shape.setPosition({ _shape.getPosition().x, ngin::MainLevel::view_.getSize().y - _shape.getGlobalBounds().height });
 		}
 		if (_shape.getPosition().x < 0) {
 			_shape.setPosition({ 0, _shape.getPosition().y });

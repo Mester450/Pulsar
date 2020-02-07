@@ -4,7 +4,9 @@ std::string Endscreen::_nameString = "Unknown";
 
 void Endscreen::setup()
 {
-	sf::FloatRect screen = { 0, 0 , 1366, 768 };
+	sf::FloatRect screen = { 0, 0 ,
+		ngin::MainLevel::view_.getSize().x,
+		ngin::MainLevel::view_.getSize().y };
 
 	_gameOver.setFont(*ngin::Resources::AcquireFont("oldgame.ttf"));
 	_gameOver.setCharacterSize(90);

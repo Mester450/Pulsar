@@ -28,12 +28,12 @@ void Enemy::update(Starship& starShip)
 		// ------------------------------------------------
 
 		// --- visszaverodes a szelekkel --------------------
-		if (_shapeEnemy.getPosition().x + _shapeEnemy.getGlobalBounds().width > ngin::MainLevel::getView().getSize().x ||
+		if (_shapeEnemy.getPosition().x + _shapeEnemy.getGlobalBounds().width > ngin::MainLevel::view_.getSize().x ||
 			_shapeEnemy.getPosition().x < 0)
 		{
 			_movement.x = -_movement.x;
 		}
-		else if (_shapeEnemy.getPosition().y + _shapeEnemy.getGlobalBounds().height > ngin::MainLevel::getView().getSize().y ||
+		else if (_shapeEnemy.getPosition().y + _shapeEnemy.getGlobalBounds().height > ngin::MainLevel::view_.getSize().y ||
 			_shapeEnemy.getPosition().y < 0)
 		{
 			_movement.y = -_movement.y;

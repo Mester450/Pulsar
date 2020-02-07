@@ -3,7 +3,9 @@
 
 void Highscores::setup()
 {	
-	sf::FloatRect screen{ 0,0, 1366, 768 };
+	sf::FloatRect screen = { 0, 0 ,
+		ngin::MainLevel::view_.getSize().x,
+		ngin::MainLevel::view_.getSize().y };
 
 	_highScores.setFont(*ngin::Resources::AcquireFont("oldgame.ttf"));
 	_highScores.setCharacterSize(90);

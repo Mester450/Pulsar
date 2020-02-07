@@ -31,12 +31,15 @@ private:
 		BUTTONS_SIZE
 	};
 
+	sf::Vector2f buttonScales[BUTTONS_SIZE];
+	sf::Vector2f buttonPositions[BUTTONS_SIZE];
 	ngin::Button buttons[BUTTONS_SIZE]{
 		{"Start Game", {400, 50}},
 		{"HighScores", {400, 50}},
 		{"Settings", {400, 50}},
 		{"Exit Game", {400, 50}}
 	};
+
 
 	bool _canStartMoves[BUTTONS_SIZE];
 };

@@ -9,7 +9,7 @@ namespace ngin
 	public:
 		Button(const sf::Vector2f& size) {
 			shape_.setSize(size);
-			selectThickness_ = 2.5F;
+			selectThickness_ = 3.499F;
 		}
 		Button(const sf::Vector2f& size, const sf::Texture& texture) : Button(size) {
 			this->setTexture(texture);
@@ -23,12 +23,13 @@ namespace ngin
 			centerTextInShape(text_, shape_);
 			textPos_ = text_.getPosition();
 		}
-		Button() : Button(sf::Vector2f{ 400, 50 }) {}
 		Button(const sf::String& txt, const sf::Vector2f& buttonSize) : Button(buttonSize)
 		{
 			text_.setString(txt);
 			text_.setCharacterSize(30);
 		}
+		Button() : Button(sf::Vector2f{ 400, 50 }) {}
+
 		// Handles input events and plays given sounds and animations whenever needed.
 		void handleEvents(const sf::Event& event, const sf::Vector2f& mouse);
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -42,6 +43,7 @@ namespace ngin
 		void setPosition(const sf::Vector2f& position);
 		void setSelectColor(const sf::Color& color);
 		void setSelectThickness(const float thickness);
+		void setOrigin(const sf::Vector2f& origin);
 		void setScale(const sf::Vector2f& scale);
 		void setCharacterSize(const unsigned size);
 		void setSize(const sf::Vector2f size);
@@ -54,7 +56,8 @@ namespace ngin
 		bool isPressed() const { return isPressed_; }
 		bool isActive() const { return isActive_; }
 		bool isSelected() const { return isSelected_; }
- 	private:
+
+	private:
 		sf::RectangleShape shape_;
 
 		sf::Text text_;

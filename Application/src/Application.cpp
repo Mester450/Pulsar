@@ -2,6 +2,7 @@
 
 Application::Application()
 {
+	view_ = sf::View{ {0, 0, 1920, 1080} };
 	windowVideoMode_ = { 1366,768 };
 	windowName_ = "DodgeBall";
 

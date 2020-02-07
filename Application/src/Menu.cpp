@@ -1,12 +1,15 @@
 #include "Menu.h"
 
 void Menu::setup() {
-
-
 	for (int i = 0; i < 4; i++) {
 		buttons[i].setTexture(*ngin::Resources::AcquireTexture("button.png"));
 		buttons[i].setFont(*ngin::Resources::AcquireFont("pixeled.ttf"));
-		buttons[i].setPosition({ 1366 / 2 - buttons[i].getSize().x / 2, 200 + static_cast<float>(i) * 100 });
+		buttonScales[i] = { 1.20F, 1.20F };
+		buttons[i].setScale(buttonScales[i]);
+		buttonPositions[i] = { ngin::MainLevel::view_.getSize().x / 2 - buttons[i].getGlobalBounds().width / 2,
+			300 + static_cast<float>(i) * 100 };
+		/*buttons[i].setPosition({ ngin::MainLevel::view_.getSize().x / 2 - buttons[i].getSize().x / 2,
+			300 + static_cast<float>(i) * 100 });*/
 		buttons[i].setSelectThickness(0);
 		buttons[i].setFillColor({ 28, 105, 214 });
 		buttons[i].setTextColor({ 214, 112, 28 });
@@ -20,31 +23,29 @@ void Menu::handleEvents(const sf::Event& event)
 
 		buttons[i].handleEvents(event, ngin::Cursor::getPosition());
 
+		sf::Vector2f scaleAbove = { 1.22f,1.22f };
 		if (buttons[i].isSelected()) {
 
-			buttons[i].setScale({ 1.02f,1.02f });
-
 			if (_canStartMoves[i]) {
-				const float x = buttons[i].getPosition().x - (buttons[i].getSize().x * buttons[i].getScale().x - buttons[i].getSize().x) / 2;
-				const float y = buttons[i].getPosition().y - (buttons[i].getSize().y * buttons[i].getScale().y - buttons[i].getSize().y) / 2;
+				const float x = buttonPositions[i].x - (buttons[i].getSize().x * scaleAbove.x - buttons[i].getSize().x * buttonScales[i].x) / 2;
+				const float y = buttonPositions[i].y - (buttons[i].getSize().y * scaleAbove.y - buttons[i].getSize().y * buttonScales[i].y) / 2;
 				buttons[i].setPosition({ x,y });
 
 				_canStartMoves[i] = false;
 			}
 
+			buttons[i].setScale(scaleAbove);
 		}
 		else {
-
 			if (!_canStartMoves[i]) {
-				const float x = buttons[i].getPosition().x + (buttons[i].getSize().x * buttons[i].getScale().x - buttons[i].getSize().x) / 2;
-				const float y = buttons[i].getPosition().y + (buttons[i].getSize().y * buttons[i].getScale().y - buttons[i].getSize().y) / 2;
+				const float x = buttonPositions[i].x;
+				const float y = buttonPositions[i].y;
 				buttons[i].setPosition({ x,y });
 
 				_canStartMoves[i] = true;
 			}
 
-			buttons[i].setScale({ 1,1 });
-
+			buttons[i].setScale(buttonScales[i]);
 		}
 	}
 	

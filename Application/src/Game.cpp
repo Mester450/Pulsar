@@ -5,7 +5,10 @@ std::string Game::_scoreString;
 
 void Game::setup()
 {
-	sf::FloatRect screen = { 0, 0 , 1366, 768 };
+	sf::FloatRect screen = { 0, 0 ,
+		ngin::MainLevel::view_.getSize().x,
+		ngin::MainLevel::view_.getSize().y };
+
 	Enemy::setSpeed({ 1.0F, 1.0F });
 	_levelTimer = 0.0F;
 	_waveNum = 1;

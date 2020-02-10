@@ -11,8 +11,10 @@ void Game::setup()
 
 	Enemy::setSpeed({ 1.0F, 1.0F });
 	_levelTimer = 0.0F;
-	_waveNum = 1;
 	_waveTimer = 0.0F;
+
+	_spawnDeltaTime = 0.0F;
+	_waveNum = 1;
 	_drawWave = true;
 
 	_scoreTextTime.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
@@ -45,7 +47,7 @@ void Game::update()
 
 		_spawnDeltaTime += ngin::Timer::getDeltaTime();
 		if (_spawnDeltaTime >= _spawnTime) {
-			_spawnDeltaTime = 0;
+			_spawnDeltaTime = 0.0F;
 
 			generateEnemy();
 		}
@@ -67,9 +69,6 @@ void Game::update()
 			_scoreString = std::to_string(_scoreTime);
 			_scoreTextTime.setString(_scoreString);
 		}
-		else {
-			response_ = RESPONSES::RESPONSES_ENDSCREEN;
-		}
 	}
 	else {
 		_waveTimer += ngin::Timer::getDeltaTime();
@@ -79,6 +78,9 @@ void Game::update()
 		}
 	}
 
+	if (!_starShip.isAlive()) {
+		response_ = RESPONSES::RESPONSES_ENDSCREEN;
+	}
 
 }
 

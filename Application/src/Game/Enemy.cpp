@@ -42,13 +42,12 @@ void Enemy::update(Starship& starShip)
 
 		_shapeEnemy.move(_movement);
 	}
-
-
-
 }
 
 void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (_isOnScreen)
-	{ target.draw(_shapeEnemy); }
+	{
+		target.draw(_shapeEnemy);
+	}
 }

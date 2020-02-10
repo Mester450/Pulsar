@@ -48,13 +48,6 @@ void Application::handleEvents()
 		window_.close();
 	}
 
-	
-	if (_currentLevel->getResponse() == Game::RESPONSES_ENDSCREEN)
-	{
-		_currentLevel = new Endscreen;
-		_currentLevel->setup();
-	}
-
 	if (_currentLevel->getResponse() == Highscores::RESPONSES_BACK)
 	{
 		_currentLevel = new Menu;
@@ -79,6 +72,13 @@ void Application::handleEvents()
 void Application::update()
 {
 	_currentLevel->update();
+
+	if (_currentLevel->getResponse() == Game::RESPONSES_ENDSCREEN)
+	{
+		_currentLevel = new Endscreen;
+		_currentLevel->setup();
+	}
+
 }
 
 void Application::draw(sf::RenderTarget& target, sf::RenderStates states) const

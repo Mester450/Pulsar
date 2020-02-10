@@ -8,8 +8,7 @@ void Menu::setup() {
 		buttons[i].setScale(buttonScales[i]);
 		buttonPositions[i] = { ngin::MainLevel::view_.getSize().x / 2 - buttons[i].getGlobalBounds().width / 2,
 			300 + static_cast<float>(i) * 100 };
-		/*buttons[i].setPosition({ ngin::MainLevel::view_.getSize().x / 2 - buttons[i].getSize().x / 2,
-			300 + static_cast<float>(i) * 100 });*/
+		buttons[i].setPosition(buttonPositions[i]);
 		buttons[i].setSelectThickness(0);
 		buttons[i].setFillColor({ 28, 105, 214 });
 		buttons[i].setTextColor({ 214, 112, 28 });

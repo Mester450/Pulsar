@@ -94,6 +94,7 @@
     <ClCompile Include="src\Highscores\ReadWrite.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Settings.cpp" />
+    <ClCompile Include="src\Settings\ConfirmDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NGin\NGin.vcxproj">
@@ -110,6 +111,7 @@
     <ClInclude Include="src\Highscores\ReadWrite.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Settings.h" />
+    <ClInclude Include="src\Settings\ConfirmDialog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

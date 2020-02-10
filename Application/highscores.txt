@@ -1,3 +1,4 @@
+surivor450 76.2075
 surivor450 44.6298
 Unknown 36.5728
 Unknown 34.7213
@@ -7,4 +8,3 @@ Unknown 29.7495
 mokus 28.2719
 surivor450 27.5458
 suri450 24.492
-anyukad_jo 22.3902

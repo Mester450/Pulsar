@@ -15,7 +15,7 @@ void Highscores::setup()
 
 	_back.setTexture(*ngin::Resources::AcquireTexture("button.png"));
 	_back.setFont(*ngin::Resources::AcquireFont("pixeled.ttf"));
-	_back.setPosition({ 1366 / 2 - _back.getSize().x / 2, 675 });
+	_back.setPosition({ ngin::MainLevel::view_.getSize().x / 2 - _back.getSize().x / 2, 785 });
 	_back.setSelectThickness(0);
 	_back.setFillColor({ 28, 105, 214 });
 	_back.setTextColor({ 214, 112, 28 });

@@ -23,14 +23,14 @@ void Endscreen::setup()
 
 	button.setTexture(*ngin::Resources::AcquireTexture("button.png"));
 	button.setFont(*ngin::Resources::AcquireFont("pixeled.ttf"));
-	button.setPosition({ 1366 / 2 - button.getSize().x / 2, 400 });
+	button.setPosition({ ngin::MainLevel::view_.getSize().x / 2 - button.getSize().x / 2, 550 });
 	button.setSelectThickness(0);
 	button.setFillColor({ 28, 105, 214 });
 	button.setTextColor({ 214, 112, 28 });
 
 	_playerName.setTexture(*ngin::Resources::AcquireTexture("inputtext.png"));
 	_playerName.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
-	_playerName.setPosition({ 1366 / 2 - _playerName.getSize().x / 2, 325 });
+	_playerName.setPosition({ ngin::MainLevel::view_.getSize().x / 2 - _playerName.getSize().x / 2, 485 });
 	_playerName.setFillColor({ 255, 255, 255 });
 	_playerName.setTextColor({ 0, 0, 0 });
 	_playerName.setSelectColor({ 214, 112, 28 });

@@ -14,7 +14,7 @@ public:
 
 		for (int i = 0; i < _lives; i++) {
 			_health.push_back(sf::RectangleShape{ {20, 20} });
-			_health[i].setPosition({( 1366 - _health[i].getGlobalBounds().width - 10) - i * ( _health[i].getGlobalBounds().width + 20) , 10 });
+			_health[i].setPosition({(ngin::MainLevel::view_.getSize().x - _health[i].getGlobalBounds().width - 10) - i * ( _health[i].getGlobalBounds().width + 20) , 10 });
 
 		}
 	}

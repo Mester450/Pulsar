@@ -68,6 +68,12 @@ void Application::handleEvents()
 		_currentLevel->setup();
 	}
 
+	if (_currentLevel->getResponse() == Settings::RESPONSES_MENU)
+	{
+		_currentLevel = new Menu;
+		_currentLevel->setup();
+	}
+
 }
 
 void Application::update()

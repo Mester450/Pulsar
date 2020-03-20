@@ -90,6 +90,12 @@ void ConfirmDialog::setButtonsCharacterSize(const unsigned characterSize)
 	closeButton_.setCharacterSize(characterSize);
 }
 
+void ConfirmDialog::setButtonsColor(const sf::Color& color)
+{
+	okButton_.setFillColor(color);
+	closeButton_.setFillColor(color);
+}
+
 void ConfirmDialog::setTextCharacterSize(const unsigned characterSize)
 {
 	text_.setCharacterSize(characterSize);

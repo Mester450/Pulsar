@@ -13,7 +13,18 @@ Application::Application()
 
 void Application::setup()
 {
+	Music::playTheme(Music::Theme::Menu);
 	ngin::Resources::setLocation("assets/");
+
+	ngin::MainLevel::setWindowIcon("icon.png");
+	_background.setTexture(NG_TEXTURE("background.png"));
+	ngin::Cursor::setTexture(NG_TEXTURE("cursor.png"));
+	ngin::Cursor::setScale(cursorScale_);
+
+	ngin::Audio::subscribeMusic(&Music::nowPlaying_);
+	ngin::Cursor::setBuffer(NG_SOUNDBUFFER("Click.wav"));
+
+	ngin::Audio::subscribeSound(ngin::Cursor::getSoundPtr());
 
 	_currentLevel = new Menu;
 	_currentLevel->setup();
@@ -29,6 +40,8 @@ void Application::handleEvents()
 
 	if (_currentLevel->getResponse() == Menu::RESPONSES_START)
 	{
+		_background.setColor(sf::Color{0,0,0});
+		ngin::Cursor::setScale({0,0});
 		_currentLevel = new Game;
 		_currentLevel->setup();
 	}
@@ -75,14 +88,16 @@ void Application::update()
 
 	if (_currentLevel->getResponse() == Game::RESPONSES_ENDSCREEN)
 	{
+		_background.setColor(sf::Color{ 255,255,255 });
+		ngin::Cursor::setScale(cursorScale_);
 		_currentLevel = new Endscreen;
 		_currentLevel->setup();
 	}
-
 }
 
 void Application::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.draw(_background);
 	_currentLevel->draw(target, states);
 
 	sf::RectangleShape shape;

@@ -13,7 +13,8 @@ public:
 		_shape.setPosition({ 1366 / 2 - _shape.getGlobalBounds().width / 2, 768 / 2 - _shape.getGlobalBounds().height / 2 });
 
 		for (int i = 0; i < _lives; i++) {
-			_health.push_back(sf::RectangleShape{ {20, 20} });
+			_health.push_back(sf::RectangleShape{ {40, 40} });
+			_health[i].setTexture(&NG_TEXTURE("heart.png"));
 			_health[i].setPosition({(ngin::MainLevel::view_.getSize().x - _health[i].getGlobalBounds().width - 10) - i * ( _health[i].getGlobalBounds().width + 20) , 10 });
 
 		}

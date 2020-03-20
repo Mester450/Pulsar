@@ -10,18 +10,25 @@
 class Enemy : public sf::Drawable {
 public:
 	Enemy(const sf::Vector2f& position) {
-		_shapeEnemy.setTexture(&*ngin::Resources::AcquireTexture("Enemy.png"));
+		_explosionSound.setBuffer(NG_SOUNDBUFFER("explosion.wav"));
+		ngin::Audio::subscribeSound(&_explosionSound);
+
+		_explosion.setTexture(NG_TEXTURE("explosion.png"));
+		_explosion.setScale({ 0.5F, 0.5F});
+
 		_shapeEnemy.setSize({ 200, 200 });
-		_shapeEnemy.setScale({ 0.2f, 0.2f });
-		_shapeEnemy.setFillColor(sf::Color::Red);
+		_shapeEnemy.setScale({ 0.3f, 0.3f });
 
 		_isAlive = true;
 		_isTouching = false;
 		_touched = false;
 		_isOnScreen = true;
-		//_shapeEnemy.setPosition({ 1366 / 2 - _shapeEnemy.getGlobalBounds().width / 2, 768 / 2 - _shapeEnemy.getGlobalBounds().height / 2 });
-		_shapeEnemy.setPosition(position);
 
+		_explosionTrigger = false;
+		_explosionTimer = 0.0F;
+
+		_shapeEnemy.setPosition(position);
+		_explosion.setPosition(_shapeEnemy.getPosition());
 
 		sf::Vector2i randNum;
 
@@ -51,10 +58,6 @@ public:
 	
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-	bool getIsOnScreen() {
-		return _isOnScreen;
-	}
-
 	sf::FloatRect getGlobalBounds() {
 		return _shapeEnemy.getGlobalBounds();
 	}
@@ -71,15 +74,23 @@ public:
 		_speed = in_speed;
 	}
 
+	void setTexture(const sf::Texture& texture);
 
 private:
 	sf::RectangleShape _shapeEnemy;
-	sf::Vector2f _movement;
-	static sf::Vector2f _speed;
+	sf::Sprite _explosion;
+
+	sf::Vector2f _movement; // the amount of movement in vector (random direction)
+	static sf::Vector2f _speed; // the speed of movement
+
+	static sf::Sound _explosionSound;
 
 	bool _isAlive;
 	bool _isTouching;
 	bool _touched;
 	bool _isOnScreen;
 
+	bool _explosionTrigger;
+	float _explosionTimer;
+	const float _explosionLimit = 0.5F;
 };

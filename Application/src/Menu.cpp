@@ -11,7 +11,7 @@ void Menu::setup() {
 		buttons[i].setPosition(buttonPositions[i]);
 		buttons[i].setSelectThickness(0);
 		buttons[i].setFillColor({ 28, 105, 214 });
-		buttons[i].setTextColor({ 214, 112, 28 });
+		buttons[i].setTextColor({ 184, 60, 251 });
 	}
 }
 

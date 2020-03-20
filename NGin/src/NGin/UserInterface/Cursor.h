@@ -11,6 +11,9 @@ namespace ngin {
 		// texture of the mouse displayed
 		static void setTexture(const sf::Texture& texture);
 
+		// sets tjhe scale of the sprite_ in private
+		static void setScale(const sf::Vector2f& scale);
+
 		// this function returns the position of an element relative to the window
 		// the cursor is set to. (needs void followMouse)
 		static sf::Vector2f getPosition() { return sprite_.getPosition(); }

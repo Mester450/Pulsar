@@ -10,7 +10,7 @@ void Highscores::setup()
 	_highScores.setFont(*ngin::Resources::AcquireFont("oldgame.ttf"));
 	_highScores.setCharacterSize(90);
 	_highScores.setString("HIGHSCORES");
-	_highScores.setFillColor({ 214, 112, 28 });
+	_highScores.setFillColor({ 184, 60, 251 });
 	ngin::centerTextInBounds(_highScores, screen, -300);
 
 	_back.setTexture(*ngin::Resources::AcquireTexture("button.png"));
@@ -18,14 +18,14 @@ void Highscores::setup()
 	_back.setPosition({ ngin::MainLevel::view_.getSize().x / 2 - _back.getSize().x / 2, 785 });
 	_back.setSelectThickness(0);
 	_back.setFillColor({ 28, 105, 214 });
-	_back.setTextColor({ 214, 112, 28 });
+	_back.setTextColor({ 184, 60, 251 });
 
 	// TODO: REMOVE
 	for (int i = 0; i < (int)ReadWrite::getPlayers()->size(); i++) {
 		sf::Text tmp;
 		tmp.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
 		tmp.setCharacterSize(30);
-		tmp.setFillColor({ 214, 112, 28 });
+		tmp.setFillColor({ 255, 255, 255 });
 		tmp.setString(std::to_string(i + 1) + ": " +
 			ReadWrite::getPlayers()->at(i).name + " " +
 			std::to_string(ReadWrite::getPlayers()->at(i).score));

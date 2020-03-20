@@ -5,7 +5,7 @@ class ConfirmDialog : public sf::Drawable {
 public:
 	ConfirmDialog() : ConfirmDialog({ 700, 220 }) {}
 	ConfirmDialog(const sf::Vector2f& backgroundSize)
-		: ConfirmDialog(backgroundSize, { 430, 50 }) {}
+		: ConfirmDialog(backgroundSize, { 400, 50 }) {}
 	ConfirmDialog(const sf::Vector2f& backgroundSize, const sf::Vector2f& buttonSize) {
 		okButton_.setString("Ok");
 		closeButton_.setString("Close");
@@ -35,6 +35,7 @@ public:
 	void setString(const std::string& string) { text_.setString(string); }
 	void setCharacterSize(const unsigned characterSize);
 	void setButtonsCharacterSize(const unsigned characterSize);
+	void setButtonsColor(const sf::Color &color);
 	void setTextCharacterSize(const unsigned characterSize);
 	void setSelectColor(const sf::Color& color);
 	void setTextColor(const sf::Color& color);

@@ -1,10 +1,10 @@
 surivor450 99999.2
 Mokus 117.806
+Unknown 116.055
 Bako 111.533
-Bako 76.5789
-surivor450 76.2075
-Bako 74.4648
-surivor450 44.6298
-Bako 37.631
-Unknown 36.5728
-Unknown 34.7213
+surivor450 110.969
+Unknown 97.0959
+bako_buzi 97.008
+beke_buzi 92.8791
+Unknown 89.9131
+beke_buzi 88.537

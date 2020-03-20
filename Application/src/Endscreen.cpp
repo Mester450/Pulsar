@@ -4,6 +4,8 @@ std::string Endscreen::_nameString = "Unknown";
 
 void Endscreen::setup()
 {
+	Music::playTheme(Music::Theme::GameOver); // play gameover music
+
 	sf::FloatRect screen = { 0, 0 ,
 		ngin::MainLevel::view_.getSize().x,
 		ngin::MainLevel::view_.getSize().y };
@@ -11,7 +13,7 @@ void Endscreen::setup()
 	_gameOver.setFont(*ngin::Resources::AcquireFont("oldgame.ttf"));
 	_gameOver.setCharacterSize(90);
 	_gameOver.setString("Game Over");
-	_gameOver.setFillColor({214, 112, 28});
+	_gameOver.setFillColor({ 184, 60, 251 });
 
 	_score.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
 	_score.setCharacterSize(45);
@@ -26,7 +28,7 @@ void Endscreen::setup()
 	button.setPosition({ ngin::MainLevel::view_.getSize().x / 2 - button.getSize().x / 2, 550 });
 	button.setSelectThickness(0);
 	button.setFillColor({ 28, 105, 214 });
-	button.setTextColor({ 214, 112, 28 });
+	button.setTextColor({ 184, 60, 251 });
 
 	_playerName.setTexture(*ngin::Resources::AcquireTexture("inputtext.png"));
 	_playerName.setFont(*ngin::Resources::AcquireFont("arial.ttf"));
@@ -34,6 +36,7 @@ void Endscreen::setup()
 	_playerName.setFillColor({ 255, 255, 255 });
 	_playerName.setTextColor({ 0, 0, 0 });
 	_playerName.setSelectColor({ 214, 112, 28 });
+
 }
 
 void Endscreen::handleEvents(const sf::Event& event)
@@ -74,6 +77,7 @@ void Endscreen::handleEvents(const sf::Event& event)
 			_nameString = std::string(_playerName.getString());
 		}
 		response_ = RESPONSES_BACK;
+		Music::playTheme(Music::Theme::Menu); // revert to menu music
 	}
 	else {
 		response_ = RESPONSES_NONE;

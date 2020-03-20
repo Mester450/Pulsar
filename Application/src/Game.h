@@ -8,10 +8,10 @@
 #include "Game/Starship.h"
 
 #include "Game/Enemy.h"
+#include "Music/Music.h"
 
 class Game : public ngin::Level {
 public:
-
 	enum RESPONSES {
 		RESPONSES_NONE = 5,
 		RESPONSES_ENDSCREEN,
@@ -20,7 +20,6 @@ public:
 	
 	Game() {
 		_scoreTime = 0.0F; // reset score
-		generateEnemy();
 	}
 	// gets called once in the beginning-
 	void setup();
@@ -40,6 +39,7 @@ public:
 	}
 
 private:
+	unsigned enemyType = 0;
 	void generateEnemy();
 
 	std::vector<Enemy> _enemies;

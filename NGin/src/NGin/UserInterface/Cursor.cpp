@@ -18,6 +18,11 @@ namespace ngin {
 		hasTexture_ = true;
 	}
 
+	void Cursor::setScale(const sf::Vector2f& scale)
+	{
+		sprite_.setScale(scale);
+	}
+
 	void Cursor::followMouse(sf::RenderWindow& window)
 	{
 		// sets sprite's coordinates to the mouse's position

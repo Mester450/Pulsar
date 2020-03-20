@@ -10,6 +10,8 @@
 #include "Highscores.h"
 #include "Highscores/ReadWrite.h"
 
+#include "Music/Music.h"
+
 class Application : public ngin::MainLevel
 {
 public:
@@ -22,9 +24,13 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
+	sf::Sprite _background;
+
 	ngin::Level* _currentLevel;
 
 	ReadWrite _readWrite;
+
+	const sf::Vector2f cursorScale_ = { 0.5F, 0.5F };
 };
 
 ngin::MainLevel* setMainLevel() {

@@ -93,6 +93,7 @@
     <ClCompile Include="src\Highscores.cpp" />
     <ClCompile Include="src\Highscores\ReadWrite.cpp" />
     <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\Music\Music.cpp" />
     <ClCompile Include="src\Settings.cpp" />
     <ClCompile Include="src\Settings\ConfirmDialog.cpp" />
   </ItemGroup>
@@ -102,6 +103,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Endscreen.h" />
     <ClInclude Include="src\Game.h" />
@@ -110,8 +112,15 @@
     <ClInclude Include="src\Highscores.h" />
     <ClInclude Include="src\Highscores\ReadWrite.h" />
     <ClInclude Include="src\Menu.h" />
+    <ClInclude Include="src\Music\Music.h" />
     <ClInclude Include="src\Settings.h" />
     <ClInclude Include="src\Settings\ConfirmDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Application.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

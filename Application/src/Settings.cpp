@@ -22,7 +22,9 @@ void Settings::setup()
 	// -------------------------------------
 
 	// --- Setting Styles ------------------
-	setupUIStyle(*font_, 40, sf::Color{ 28, 105, 214 }, sf::Color{ 214, 112, 28 });
+	setupUIStyle(*font_, 40, sf::Color{ 28, 105, 214 }, sf::Color{ 184, 60, 251 });
+	confirmDialog_.setFont(NG_FONT("arial.ttf"));
+	confirmDialog_.setCharacterSize(32);
 	// -------------------------------------
 
 	// --- Setting Scales ------------------
@@ -55,7 +57,7 @@ void Settings::setup()
 	soundSlider_.setPosition({ 425, 450 });
 	musicSlider_.setPosition({ 425, 600 });
 	windowTypeDropdown_.setPosition({ 1000, 600 });
-	videoModeDropdown_.setPosition({ 1300, 450 });
+	videoModeDropdown_.setPosition({ 1000, 450 });
 
 	confirmDialog_.setPosition({ 960 - confirmDialog_.getGlobalBounds().width / 2,
 								 540 - confirmDialog_.getGlobalBounds().height / 2 });
@@ -289,6 +291,19 @@ void Settings::addResolutionsTo(ngin::Dropdown& dropdown)
 	}
 }
 
+bool Settings::writeFile()
+{
+	std::ofstream out(fileName_);
+
+
+	return false;
+}
+
+bool Settings::readFile()
+{
+	return false;
+}
+
 void Settings::setupUIStyle(const sf::Font& font, const unsigned fontSize, const sf::Color& backgroundColor, const sf::Color& fontColor)
 {
 	backButton_.setFont(font);
@@ -335,11 +350,11 @@ void Settings::setupUIStyle(const sf::Font& font, const unsigned fontSize, const
 	resolutionText_.setFillColor(fontColor);
 	resolutionText_.setCharacterSize(fontSize);
 
-	confirmDialog_.setFont(font);
 	confirmDialog_.setTextColor(fontColor);
 	confirmDialog_.setButtonsCharacterSize(fontSize - 2);
 	confirmDialog_.setTextCharacterSize(fontSize + 7);
 	confirmDialog_.setSelectColor(fontColor);
+	confirmDialog_.setButtonsColor(backgroundColor);
 
 	backButton_.setFillColor(backgroundColor);
 	applyButton_.setFillColor(backgroundColor);

@@ -1,6 +1,7 @@
 #include "Enemy.h"
 
-sf::Vector2f Enemy::_speed = {1, 1};
+sf::Vector2f Enemy::_speed = { 0, 0 }; // default not moving
+sf::Sound Enemy::_explosionSound; // sound it makes when it dies
 
 void Enemy::handleEvents(const sf::Event& event)
 {
@@ -17,6 +18,10 @@ void Enemy::update(Starship& starShip)
 			if (_isTouching && _touched == false && starShip.isAlive()) {
 				// --- levesz az eletbol es letorli az ellenseget amelyikkel erintkezik ---
 				starShip.setLives(starShip.getLives() - 1);
+
+				_explosionSound.play();
+
+				_explosionTrigger = true;
 				_isOnScreen = false;
 			}
 
@@ -40,7 +45,20 @@ void Enemy::update(Starship& starShip)
 		}
 		// --------------------------------------------------
 
-		_shapeEnemy.move(_movement);
+		_shapeEnemy.move({
+			_movement.x * ngin::Timer::getDeltaTime(),
+			_movement.y * ngin::Timer::getDeltaTime(),
+			});
+
+		_explosion.setPosition(_shapeEnemy.getPosition());
+	}
+	
+	if (_explosionTrigger) {
+		_explosionTimer += ngin::Timer::getDeltaTime();
+		if (_explosionTimer > _explosionLimit) {
+			_explosionTimer = 0.0F;
+			_explosionTrigger = false;
+		}
 	}
 }
 
@@ -50,4 +68,14 @@ void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(_shapeEnemy);
 	}
+
+	if (_explosionTrigger)
+	{
+		target.draw(_explosion);
+	}
+}
+
+void Enemy::setTexture(const sf::Texture& texture)
+{
+	_shapeEnemy.setTexture(&texture);
 }

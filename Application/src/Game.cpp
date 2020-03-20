@@ -5,11 +5,13 @@ std::string Game::_scoreString;
 
 void Game::setup()
 {
+	Music::playTheme(Music::Theme::Wave); // play wave music
+
 	sf::FloatRect screen = { 0, 0 ,
 		ngin::MainLevel::view_.getSize().x,
 		ngin::MainLevel::view_.getSize().y };
 
-	Enemy::setSpeed({ 1.0F, 1.0F });
+	Enemy::setSpeed({ 210.0F, 210.0F });
 	_levelTimer = 0.0F;
 	_waveTimer = 0.0F;
 
@@ -24,8 +26,10 @@ void Game::setup()
 	_waveText.setFont(*ngin::Resources::AcquireFont("oldgame.ttf"));
 	_waveText.setCharacterSize(90);
 	_waveText.setString("Wave " + std::to_string(_waveNum));
-	_waveText.setFillColor({ 214, 112, 28 });
+	_waveText.setFillColor({ 184, 60, 251 });
 	ngin::centerTextInBounds(_waveText, screen, -20);
+
+	generateEnemy();
 }
 
 void Game::handleEvents(const sf::Event& event)
@@ -57,7 +61,7 @@ void Game::update()
 			_levelTimer = 0.0F;
 
 			_enemies.clear();
-			Enemy::setSpeed({ Enemy::getSpeed().x + 0.5F, Enemy::getSpeed().y + 0.5F });
+			Enemy::setSpeed({ Enemy::getSpeed().x + 70.0F, Enemy::getSpeed().y + 70.0F });
 
 			_drawWave = true;
 			_waveNum++;
@@ -80,6 +84,7 @@ void Game::update()
 
 	if (!_starShip.isAlive()) {
 		response_ = RESPONSES::RESPONSES_ENDSCREEN;
+		Music::playTheme(Music::Theme::Menu); // revert to menu music
 	}
 
 }
@@ -103,6 +108,12 @@ void Game::generateEnemy()
 {
 	_enemies.push_back(sf::Vector2f{ -500, -500 });
 	sf::Vector2f enemyPos;
+
+	enemyType++;
+	enemyType = enemyType % 5; // 0,1,2,3,4
+
+	std::string fileName = "enemy" + std::to_string(enemyType+1) + ".png";
+	_enemies.back().setTexture(NG_TEXTURE(fileName));
 
 	sf::FloatRect safeZone = {
 		_starShip.getGlobalBounds().left - 100 ,
